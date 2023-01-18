@@ -12,7 +12,8 @@ class ItemController @Inject() (val cc:ControllerComponents,
   def count: Action[AnyContent] = Action { Ok(counter.nextCount().toString) }
 
   def index() = Action { implicit request: Request[AnyContent] =>
-    Ok(views.html.item(count().toString()))
+    val item_count: String = counter.nextCount().toString
+    Ok(views.html.item(item_count))
   }
 
 }
