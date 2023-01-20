@@ -1,24 +1,15 @@
 package controllers
 
+import models.ItemInMemoryModel
 import play.api._
 import play.api.mvc._
 
 import javax.inject._
 
-/**
- * This controller creates an `Action` to handle HTTP requests to the
- * application's home page.
- */
 @Singleton
 class HomeController @Inject()(val controllerComponents: ControllerComponents) extends BaseController {
 
-  /**
-   * Create an Action to render an HTML page.
-   *
-   * The configuration in the `routes` file means that this method
-   * will be called when the application receives a `GET` request with
-   * a path of `/`.
-   */
+
   def index() = Action { implicit request: Request[AnyContent] =>
     Ok(views.html.index())
   }
@@ -28,7 +19,12 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     credentials.map { args =>
       val username = args("username").head
       val password = args("password").head
-      Redirect(routes.ItemController.index())
+// This didn't compile when ItemInMemoryModel was a class vice an object.  Why?
+      if (ItemInMemoryModel.validateUser(username,password)) {
+        Redirect(routes.ItemController.index())
+      } else {
+        Redirect(routes.HomeController.index())
+      }
     }.getOrElse(Redirect(routes.HomeController.index()))
   }
 }
