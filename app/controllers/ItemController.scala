@@ -16,4 +16,14 @@ class ItemController @Inject() (val cc:ControllerComponents,
     Ok(views.html.item(item_count))
   }
 
+  def addItem = Action { request =>
+    val itemVals = request.body.asFormUrlEncoded
+    itemVals.map { args =>
+      val itemName = args("itemName").head
+      val itemDescription = args("itemDescription").head
+      Redirect(routes.ItemController.index())
+    }.getOrElse{Ok("Oops")}
+
+  }
+
 }

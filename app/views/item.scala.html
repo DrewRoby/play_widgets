@@ -1,7 +1,10 @@
 @(counter: String)
 
 @main("Item Counter") {
-  <button>Add Item</button>
-  <button>Subtract Item</button>
   <h1>Item Count: @counter </h1>
+  <form method="post" action="@routes.ItemController.addItem()">
+    Item: <input type="text" name="itemName">
+    Description: <input type="text" name="itemDescription">
+    <input type="submit">
+  </form>
 }
