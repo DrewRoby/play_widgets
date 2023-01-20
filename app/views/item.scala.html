@@ -1,4 +1,4 @@
-@(counter: String)
+@(counter: String, itemList: Seq[String])
 
 @main("Item Counter") {
   <h1>Item Count: @counter </h1>
@@ -7,4 +7,15 @@
     Description: <input type="text" name="itemDescription">
     <input type="submit">
   </form>
+  <ul>
+    @for(item <- itemList.itemName) {
+      <li>@item</li>
+    }
+  </ul>
+  <ul>
+    @for(item <- itemList.itemDescription) {
+      <li>@item</li>
+    }
+  </ul>
+
 }
