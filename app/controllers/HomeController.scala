@@ -23,7 +23,12 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     Ok(views.html.index())
   }
 
-  def login() = Action {
-    Ok(views.html.login())
+  def loginAction() = Action { request =>
+    val credentials = request.body.asFormUrlEncoded
+    credentials.map { args =>
+      val username = args("username").head
+      val password = args("password").head
+      Redirect(routes.ItemController.index())
+    }.getOrElse(Redirect(routes.HomeController.index()))
   }
 }
