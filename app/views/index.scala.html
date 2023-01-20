@@ -1,5 +1,12 @@
 @()
 
-@main("Welcome to Play") {
-  <h1>Welcome to Play!</h1>
+@main("Here's the app") {
+  <h1>Log In To The App!</h1>
+  <form method="post" name="@routes.HomeController.loginAction()">
+    Username: <input type="text" name="username">
+    <br>
+    Password: <input type="password" name="password">
+    <br>
+    <input type="submit">
+  </form>
 }
