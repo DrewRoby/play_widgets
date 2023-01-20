@@ -12,3 +12,5 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 GET     /item                       controllers.ItemController.index()
 + nocsrf
 POST    /addItem                    controllers.ItemController.addItem()
+
+GET     /login                      controllers.HomeController.login()
