@@ -1,0 +1,21 @@
+@()
+
+@main("Login") {
+<h1>Log In To The App!</h1>
+<form method="post" name="@routes.HomeController.loginAction()">
+    Username: <input type="text" name="username">
+    <br>
+    Password: <input type="password" name="password">
+    <br>
+    <input type="submit">
+</form>
+<h1>Create New User</h1>
+<form method="post" name="@routes.HomeController.createUser()">
+    Username: <input type="text" name="username">
+    <br>
+    Password: <input type="password" name="password">
+    <br>
+    <input type="submit">
+</form>
+
+}

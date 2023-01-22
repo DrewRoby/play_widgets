@@ -2,6 +2,7 @@ package controllers
 
 import play.api.mvc._
 import services.Counter
+import models.ItemInMemoryModel
 
 import javax.inject.{Inject, Singleton}
 
@@ -13,7 +14,9 @@ class ItemController @Inject() (val cc:ControllerComponents,
 
   def index() = Action { implicit request: Request[AnyContent] =>
     val item_count: String = counter.nextCount().toString
-    Ok(views.html.item(item_count))
+    val username = "asdf"
+    val items = ItemInMemoryModel.getItems(username)
+    Ok(views.html.item(item_count, items))
   }
 
   def addItem = Action { request =>

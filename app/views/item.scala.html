@@ -7,15 +7,10 @@
     Description: <input type="text" name="itemDescription">
     <input type="submit">
   </form>
+<!-- TODO: How to get multiple items into and out of a larger data structure than a list?-->
   <ul>
-    @for(item <- itemList.itemName) {
+    @for(item <- itemList) {
       <li>@item</li>
     }
   </ul>
-  <ul>
-    @for(item <- itemList.itemDescription) {
-      <li>@item</li>
-    }
-  </ul>
-
 }

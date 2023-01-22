@@ -1,12 +1,9 @@
 @()
 
 @main("Here's the app") {
-  <h1>Log In To The App!</h1>
-  <form method="post" name="@routes.HomeController.loginAction()">
-    Username: <input type="text" name="username">
-    <br>
-    Password: <input type="password" name="password">
-    <br>
-    <input type="submit">
-  </form>
+  <h1>Welcome to the app.</h1>
+  <br>
+  <h3>Please log in here:</h3>
+<a href="/login">Login</a>
+
 }

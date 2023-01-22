@@ -20,7 +20,7 @@ object ItemInMemoryModel {
   def getItems(username: String): Seq[String] = {
     items.get(username).getOrElse(Nil)
   }
-
+// TODO: Item needs unique generated item_id, store, account num
   def addItem(username: String, item: String): Unit = ???
 
   def removeItem(username: String, itemId: Int): Boolean = ???

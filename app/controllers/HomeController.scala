@@ -14,12 +14,14 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     Ok(views.html.index())
   }
 
+  def displayLogin() = Action { Ok(views.html.login())}
+
   def loginAction() = Action { request =>
     val credentials = request.body.asFormUrlEncoded
     credentials.map { args =>
       val username = args("username").head
       val password = args("password").head
-// This didn't compile when ItemInMemoryModel was a class vice an object.  Why?
+// TODO: This didn't compile when ItemInMemoryModel was a class vice an object.  Why?
       if (ItemInMemoryModel.validateUser(username,password)) {
         Redirect(routes.ItemController.index())
       } else {
@@ -27,4 +29,6 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
       }
     }.getOrElse(Redirect(routes.HomeController.index()))
   }
+
+  def createUser() = TODO
 }
